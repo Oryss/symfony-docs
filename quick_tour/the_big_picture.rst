@@ -76,7 +76,7 @@ Dans ``src/Controller``, créer une nouvelle classe ``DefaultController`` et une
     {
         public function index()
         {
-            return new Response('Bonjour !');
+            return new Response('Hello!');
         }
     }
 
@@ -94,8 +94,7 @@ Le système de routage est *beaucoup* plus puissant. Créons une route plus int�
     +     path: /hello/{name}
         controller: 'App\Controller\DefaultController::index'
 
-The URL to this page has changed: it is *now* ``/hello/*``: the ``{name}`` acts
-like a wildcard that matches anything. And it gets better! Update the controller too:
+L'URL a changé : c'est maintenant ``/hello/*`` : le ``{name}`` correspond à un caractère de remplacement qui match avec n'importe quoi. Modifiez également le contrôleur :
 
 .. code-block:: diff
 
@@ -114,17 +113,15 @@ like a wildcard that matches anything. And it gets better! Update the controller
         }
     }
 
-Try the page out by going to ``http://localhost:8000/hello/Symfony``. You should
-see: Hello Symfony! The value of the ``{name}`` in the URL is available as a ``$name``
-argument in your controller.
+Allez sur la page ``http://localhost:8000/hello/Symfony``. Vous devriez voir : Hello Symfony! La valeur de ``{name}`` dans l'URL est disponible en tant qu'argument dans le contrôleur.
 
-But this can be even simpler! So let's install annotations support:
+On peut encore simplifier ! Installons le support pour les annotations :
 
 .. code-block:: terminal
 
     $ composer require annotations
 
-Now, comment-out the YAML route by adding the ``#`` character:
+Commentez la route du fichier YAML en ajoutant des ``#`` :
 
 .. code-block:: yaml
 
@@ -133,7 +130,7 @@ Now, comment-out the YAML route by adding the ``#`` character:
     #     path: /hello/{name}
     #     controller: 'App\Controller\DefaultController::index'
 
-Instead, add the route *right above* the controller method:
+Ajoutez la route juste au dessus de la méthode du contrôleur :
 
 .. code-block:: diff
 
@@ -153,9 +150,7 @@ Instead, add the route *right above* the controller method:
          }
     }
 
-This works just like before! But by using annotations, the route and controller
-live right next to each other. Need another page? Add another route and method
-in ``DefaultController``::
+Cela fonctionne comme avant ! En utilisant les annotations, la route et le contrôleur sont l'un à coté de l'autre. Vous avez besoin d'une autre page ? Ajoutez une autre route et une méthode dans ``DefaultController``::
 
     // src/Controller/DefaultController.php
     namespace App\Controller;
@@ -176,9 +171,8 @@ in ``DefaultController``::
         }
     }
 
-Routing can do *even* more, but we'll save that for another time! Right now, our
-app needs more features! Like a template engine, logging, debugging tools and more.
+Le routage peut faire *encore* plus, mais nous découvrirons ça plus tard ! Pour l'instant, notre application nécessite plus de fonctionnalités : un moteur de template, du logging, des outils de débug, etc.
 
-Keep reading with :doc:`/quick_tour/flex_recipes`.
+Continuez à lire la documentation ici :doc:`/quick_tour/flex_recipes`.
 
 .. _`Composer`: https://getcomposer.org/
