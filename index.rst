@@ -1,12 +1,12 @@
 .. _symfony2-documentation:
 
-Symfony Documentation
-=====================
+Documentation Symfony 5.0
+=========================
 
-Quick Tour
-----------
+Vue d'ensemble rapide
+---------------------
 
-Get started fast with the Symfony :doc:`Quick Tour <quick_tour/index>`:
+Découvrez Symfony rapidement :doc:`avec le quick tour <quick_tour/index>`:
 
 .. toctree::
     :hidden:
@@ -17,15 +17,15 @@ Get started fast with the Symfony :doc:`Quick Tour <quick_tour/index>`:
 * :doc:`quick_tour/flex_recipes`
 * :doc:`quick_tour/the_architecture`
 
-Getting Started
----------------
+Débuter
+-------
 
 .. toctree::
     :maxdepth: 2
 
     getting_started/index
 
-Topics
+Sujets
 ------
 
 .. toctree::
@@ -61,7 +61,7 @@ Topics
     web_link
     workflow
 
-Components
+Composants
 ----------
 
 .. toctree::
@@ -69,12 +69,12 @@ Components
 
     components/index
 
-Read the :doc:`Components </components/index>` documentation.
+Lire la documentation sur les :doc:`composants </components/index>`.
 
 Reference Documents
 -------------------
 
-Get answers quickly with reference documents:
+Trouvez des réponses rapidement avec les documents de référence :
 
 .. toctree::
     :hidden:
@@ -83,10 +83,10 @@ Get answers quickly with reference documents:
 
 .. include:: /reference/map.rst.inc
 
-Contributing
+Contribuer
 ------------
 
-Contribute to Symfony:
+Contribuer à Symfony:
 
 .. toctree::
     :hidden:
@@ -95,10 +95,10 @@ Contribute to Symfony:
 
 .. include:: /contributing/map.rst.inc
 
-Create your Own Framework
--------------------------
+Créer son propre framework
+--------------------------
 
-Want to create your own framework based on Symfony?
+Vous souhaitez créer votre propre framework basé sur Symfony ?
 
 .. toctree::
     :hidden:
