@@ -1,4 +1,4 @@
-The Quick Tour
+Vue d'ensemble
 ==============
 
 .. toctree::

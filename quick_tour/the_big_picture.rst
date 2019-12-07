@@ -1,29 +1,24 @@
-The Big Picture
-===============
+Vue d'ensemble
+==============
 
-Start using Symfony in 10 minutes! Really! That's all you need to understand the
-most important concepts and start building a real project!
+Commencez  à utiliser Symfony en 10 minutes ! Vraiment ! C'est tout ce dont vous avez besoin pour comprendre les concepts les plus importants et comment à créer de vrais projets !
 
-If you've used a web framework before, you should feel right at home with
-Symfony. If not, welcome to a whole new way of developing web applications. Symfony
-*embraces* best practices, keeps backwards compatibility (Yes! Upgrading is always
-safe & easy!) and offers long-term support.
+Si vous avez déjà utilisé un framework web, vous devriez vous sentir en terrain connu avec Symfony. Sinon, bienvenue dans une toute nouvelle manière de développer des applications web. Symfony applique les bonnes pratiques, ne casse pas la retrocompatibilité (Mettre à jour est facile et sûr) et offre un support sur le long terme.
 
 .. _installing-symfony2:
 
-Downloading Symfony
+Télécharger Symfony
 -------------------
 
-First, make sure you've installed `Composer`_ and have PHP 7.1.3 or higher.
+Avant toute chose, vous devez avoir installé `Composer`_ et avoir PHP 7.1.3 ou plus.
 
-Ready? In a terminal, run:
+Prêt ? Dans votre terminal, lancer :
 
 .. code-block:: terminal
 
     $ composer create-project symfony/skeleton quick_tour
 
-This creates a new ``quick_tour/`` directory with a small, but powerful new
-Symfony application:
+Cela créer un nouveau dossier ``quick_tour/`` avec une petite (mais puissante) application Symfony :
 
 .. code-block:: text
 
@@ -39,32 +34,26 @@ Symfony application:
     ├─ var/
     └─ vendor/
 
-Can we already load the project in a browser? Yes! You can setup
-:doc:`Nginx or Apache </setup/web_server_configuration>` and configure their
-document root to be the ``public/`` directory. But, for development, it's better
-to :doc:`install the Symfony local web server </setup/symfony_server>` and run
-it as follows:
+Peut-on déjà lancer le projet dans un navigateur ? Oui ! Vous pouvez installer :doc:`Nginx ou Apache </setup/web_server_configuration>` et configurer leur racine sur le dossier ``public/``. Mais pour le développement, il est plus pratique :doc:`d'installer le serveur Symfony local</setup/symfony_server>` et le lancer avec la commande suivante :
 
 .. code-block:: terminal
 
     $ symfony server:start
 
-Try your new app by going to ``http://localhost:8000`` in a browser!
+Essayez votre application en vous rendant sur ``http://localhost:8000`` dans un navigateur !
 
 .. image:: /_images/quick_tour/no_routes_page.png
    :align: center
    :class: with-browser
 
-Fundamentals: Route, Controller, Response
+Fondamentaux : Route, Contrôleur, Réponse
 -----------------------------------------
 
-Our project only has about 15 files, but it's ready to become a sleek API, a robust
-web app, or a microservice. Symfony starts small, but scales with you.
+Notre projet ne contient que 15 fichiers, mais il est prêt à devenir une API, une application web robute ou un microservice. Symfony commence petit, mais s'adapte à votre progression.
 
-But before we go too far, let's dig into the fundamentals by building our first page.
+Avant d'aller trop loin, découvrons déjà les fondamentaux en créant notre première page.
 
-Start in ``config/routes.yaml``: this is where *we* can define the URL to our new
-page. Uncomment the example that already lives in the file:
+Commençons dans le fichier ``config/routes.yaml`` : c'est ici que vous pouvez définir l'URL de notre nouvelle page. Décommentez la ligne d'exemple qui se trouve dans le fichier :
 
 .. code-block:: yaml
 
@@ -73,12 +62,10 @@ page. Uncomment the example that already lives in the file:
         path: /
         controller: 'App\Controller\DefaultController::index'
 
-This is called a *route*: it defines the URL to your page (``/``) and the "controller":
-the *function* that will be called whenever anyone goes to this URL. That function
-doesn't exist yet, so let's create it!
+C'est une *route* : elle définit l'URL de notre page (``/``) et le "controller" : la fonction qui sera appellée lorsqu'une personne visite l'URL. Cette fonction n'existe pas, nous pouvons la créer !
 
-In ``src/Controller``, create a new ``DefaultController`` class and an ``index``
-method inside::
+Dans ``src/Controller``, créer une nouvelle classe ``DefaultController`` et une méthode ``index``
+à l'intérieur::
 
     // src/Controller/DefaultController.php
     namespace App\Controller;
@@ -89,18 +76,15 @@ method inside::
     {
         public function index()
         {
-            return new Response('Hello!');
+            return new Response('Bonjour !');
         }
     }
 
-That's it! Try going to the homepage: ``http://localhost:8000/``. Symfony sees
-that the URL matches our route and then executes the new ``index()`` method.
+C'est tout ! Essayez d'aller sur la page d'accueil : ``http://localhost:8000/``. Symfony voit que l'URL correspond à notre route et exécute la nouvelle méthode ``index()``.
 
-A controller is just a normal function with *one* rule: it must return a Symfony
-``Response`` object. But that response can contain anything: simple text, JSON or
-a full HTML page.
+Un contrôleur est juste une fonction normale avec une unique règle : elle doit retourner un objet Symfony de type ``Response``. Mais cette réponse peut être n'importe quoi : du texte, du JSON ou une page HTML complète.
 
-But the routing system is *much* more powerful. So let's make the route more interesting:
+Le système de routage est *beaucoup* plus puissant. Créons une route plus intéressante :
 
 .. code-block:: diff
 
