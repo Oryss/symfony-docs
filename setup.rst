@@ -1,31 +1,25 @@
 .. index::
-   single: Installing and Setting up Symfony
+   single: Installer & configurer le framework Symfony
 
-Installing & Setting up the Symfony Framework
-=============================================
-
-.. admonition:: Screencast
-    :class: screencast
-
-    Do you prefer video tutorials? Check out the `Stellar Development with Symfony`_
-    screencast series.
+Installer & configurer le framework Symfony
+===========================================
 
 .. _symfony-tech-requirements:
 
-Technical Requirements
-----------------------
+Prérequis technique
+-------------------
 
-Before creating your first Symfony application you must:
+Avant de créer votre première application Symfony, vous devez :
 
-* Install PHP 7.2.5 or higher and these PHP extensions (which are installed and
-  enabled by default in most PHP 7 installations): `Ctype`_, `iconv`_, `JSON`_,
-  `PCRE`_, `Session`_, `SimpleXML`_, and `Tokenizer`_;
-* `Install Composer`_, which is used to install PHP packages;
-* `Install Symfony`_, which creates in your computer a binary called ``symfony``
-  that provides all the tools you need to develop your application locally.
+* Installer PHP 7.2.5 ou plus, et les extensions PHP suivantes (qui sont installés et activées par défaut dans la
+plupart des installations de PHP 7) : `Ctype`_, `iconv`_, `JSON`_,
+  `PCRE`_, `Session`_, `SimpleXML`_, et `Tokenizer`_;
+* `Installer Composer`_, qui est utilisé pour installer les paquets PHP;
+* `Installer Symfony`_, qui créer un exécutable sur votre ordinateur appelé ``symfony`` qui vous donne accès
+à tous les outils nécessaires pour développer votre application localement.
 
-The ``symfony`` binary provides a tool to check if your computer meets these
-requirements. Open your console terminal and run this command:
+L'exécutable ``symfony`` fournit un outil pour vérifier si votre machine répond aux exigences listées ci-dessus.
+Ouvrez un terminal et exécutez la commande suivante :
 
 .. code-block:: terminal
 
@@ -33,94 +27,90 @@ requirements. Open your console terminal and run this command:
 
 .. _creating-symfony-applications:
 
-Creating Symfony Applications
------------------------------
+Créer des applications Symfony
+------------------------------
 
-Open your console terminal and run any of these commands to create a new Symfony
-application:
+Ouvrez votre terminal et lancez une de ces commandes pour créer une nouvelle application Symfony :
 
 .. code-block:: terminal
 
-    # run this if you are building a traditional web application
+    # Pour une application web traditionelle
     $ symfony new my_project_name --full
 
-    # run this if you are building a microservice, console application or API
+    # Pour un microservice, une application console ou une API
     $ symfony new my_project_name
 
-The only difference between these two commands is the number of packages
-installed by default. The ``--full`` option installs all the packages that you
-usually need to build web applications, so the installation size will be bigger.
+L'unique différence entre ces deux commandes est le nombre de paquets installés par défaut. L'option ``--full``
+istalle tous les paquets dont vous aurez besoin pour développer une application web traditionelle, l'installation
+sera donc plus grosse.
 
-If you can't or don't want to `install Symfony`_ for any reason, run these
-commands to create the new Symfony application using Composer:
+Si vous ne pouvez, ou ne voulez pas `installer Symfony`_, lancez une de ces commandes pour créer votre application
+Symfony en utilisant Composer :
 
 .. code-block:: terminal
 
-    # run this if you are building a traditional web application
+    # Pour une application web traditionelle
     $ composer create-project symfony/website-skeleton my_project_name
 
-    # run this if you are building a microservice, console application or API
+    # Pour un microservice, une application console ou une API
     $ composer create-project symfony/skeleton my_project_name
 
-No matter which command you run to create the Symfony application. All of them
-will create a new ``my_project_name/`` directory, download some dependencies
-into it and even generate the basic directories and files you'll need to get
-started. In other words, your new application is ready!
+Peu importe la commande utilisée, un nouveau dossier ``my_project_name/`` sera crée, quelques dépendances à l'intérieur
+ de ce dernier seront installés, les dossiers et fichiers basiques seront crées. En d'autres mots, votre nouvelle
+ application est prête !
 
 .. note::
 
-    The project's cache and logs directory (by default, ``<project>/var/cache/``
-    and ``<project>/var/log/``) must be writable by the web server. If you have
-    any issue, read how to :doc:`set up permissions for Symfony applications </setup/file_permissions>`.
+    Le cache et les logs du projet (par défaut ``<projet>/var/cache/`` et ``<projet>/var/log/``) doit être accessible
+    en écriture par votre serveur web. Si vous avez des problèmes à ce niveau, consultez la page :doc:`configurer les
+     permissions d'une application Symfony </setup/file_permissions>`.
 
-Running Symfony Applications
-----------------------------
+Lancer vos applications Symfony
+-------------------------------
 
-On production, you should use a web server like Nginx or Apache (see
-:doc:`configuring a web server to run Symfony </setup/web_server_configuration>`).
-But for development, it's more convenient to use the
-:doc:`local web server </setup/symfony_server>` provided by Symfony.
+En production, vous devriez utiliser un serveur web tel que Nginx ou apache (voir
+:doc:`configurer un serveur web pour faire fonctionner Symfony </setup/web_server_configuration>`).
+Mais pour le développement, il est plus pratique d'utiliser le
+:doc:`serveur web local</setup/symfony_server>` fournit par Symfony.
 
-This local server provides support for HTTP/2, TLS/SSL, automatic generation of
-security certificates and many other features. It works with any PHP application,
-not only Symfony projects, so it's a very useful development tool.
+Le serveur local fournit un support pour le HTTP/2, TLS/SSL, la génération automatique des certificats de sécurité,
+et plein d'autres fonctionnalités. Il fonctionne avec n'importe quel application PHP, non pas seulement pour les projets
+ Symfony, c'est donc un outil de développement très utile.
 
-Open your console terminal, move into your new project directory and start the
-local web server as follows:
+Ouvrez votre terminal, placez vous dans le nouveau dossier du projet et lancez le serveur local :
 
 .. code-block:: terminal
 
     $ cd my-project/
     $ symfony server:start
 
-Open your browser and navigate to ``http://localhost:8000/``. If everything is
-working, you'll see a welcome page. Later, when you are finished working, stop
-the server by pressing ``Ctrl+C`` from your terminal.
+Ouvrez votre navigateur et rendez vous sur ``http://localhost:8000/``. Si tout fonctionne, vous verez une page
+d'accueil. Lorsque vous souhaitez stopper le serveur, faites ``Ctrl+C`` dans le terminal.
 
 .. _install-existing-app:
 
-Setting up an Existing Symfony Project
---------------------------------------
+Mettre en place un projet Symfony existant
+------------------------------------------
 
-In addition to creating new Symfony projects, you will also work on projects
-already created by other developers. In that case, you only need to get the
-project code and install the dependencies with Composer. Assuming your team uses
-Git, setup your project with the following commands:
+En plus de créer de nouveaux projets Symfony, vous allez également travailler sur des projets existants,
+crées par d'autres développeurs. Dans ce cas, vous avez seulement besoin de récupérer le code du projet et installer
+les dépendances avec Composer. En supposant que votre équipe utilise Git, installez le projet
+avec les commandes suivantes :
 
 .. code-block:: terminal
 
-    # clone the project to download its contents
+    # cloner le projet pour télécharger son contenu
     $ cd projects/
     $ git clone ...
 
-    # make Composer install the project's dependencies into vendor/
+    # faire que Composer installe les dépendances du projet dans le dossier vendor
     $ cd my-project/
     $ composer install
 
-You'll probably also need to customize your :ref:`.env file <config-dot-env>`
-and do a few other project-specific tasks (e.g. creating a database). When
-working on a existing Symfony application for the first time, it may be useful
-to run this command which displays information about the project:
+Vous aurez probablement besoin de customizer votre :ref:`fichier .env <config-dot-env>` et réaliser d'autres tâches
+spécifiques à votre projet (par exemple, créer une base de données). Lorsque vous travaillez sur une application
+Symfony existante pour la première fois, il peut être utile de lancer cette commande qui affiche des
+informations à propos du projet :
 
 .. code-block:: terminal
 
@@ -128,60 +118,55 @@ to run this command which displays information about the project:
 
 .. _symfony-flex:
 
-Installing Packages
--------------------
+Installer des paquets (packages)
+--------------------------------
 
-A common practice when developing Symfony applications is to install packages
-(Symfony calls them :doc:`bundles </bundles>`) that provide ready-to-use
-features. Packages usually require some setup before using them (editing some
-file to enable the bundle, creating some file to add some initial config, etc.)
+Une pratique courante lors du développement d'applications Symfony est d'installer des paquets
+(Symfony les appelle :doc:`bundles </bundles>`) qui offrent des fonctionnalités toutes prêtes.
+Les paquets nécessitent souvent des étapes d'installation avant de les utiliser (modifier un fichier pour activer
+le bundle, créer un fichier de configuration, etc.)
 
-Most of the time this setup can be automated and that's why Symfony includes
-`Symfony Flex`_, a tool to simplify the installation/removal of packages in
-Symfony applications. Technically speaking, Symfony Flex is a Composer plugin
-that is installed by default when creating a new Symfony application and which
-**automates the most common tasks of Symfony applications**.
+La plupart du temps, ces étapes peuvent être automatisées et c'est là que `Symfony Flex`_ entre en jeu. C'est un outil
+qui simplifie l'installation et la suppression des paquets dans les applications Symfony. Techniquement parlant,
+Symfony Flex est un plugin Composer qui est installé par défaut lors de la création d'une application Symfony et qui
+**automatique les tâches les plus courantes dans les applications Symfony**.
 
 .. tip::
 
-    You can also :doc:`add Symfony Flex to an existing project </setup/flex>`.
+    Vous pouvez également :doc:`ajouter Symfony Flex à un projet existant </setup/flex>`.
 
-Symfony Flex modifies the behavior of the ``require``, ``update``, and
-``remove`` Composer commands to provide advanced features. Consider the
-following example:
+Symfony Flex modifie le comportement des commandes Composer ``require``, ``update``, et
+``remove`` pour fournir des fonctionnalités avancées. Par exemple :
 
 .. code-block:: terminal
 
     $ cd my-project/
     $ composer require logger
 
-If you execute that command in a Symfony application which doesn't use Flex,
-you'll see a Composer error explaining that ``logger`` is not a valid package
-name. However, if the application has Symfony Flex installed, that command
-installs and enables all the packages needed to use the official Symfony logger.
+Si vous exécutez cette commande dans une application Symfony qui n'utilisant pas Flex, vous verrez une erreur
+Composer expliquant que ``logger`` n'est pas un nom de paquet valide. Par contre, si l'application inclut Flex,
+cette commande installe et active les paquets nécessaires à l'utilisation du logger officiel de Symfony.
 
-This is possible because lots of Symfony packages/bundles define **"recipes"**,
-which are a set of automated instructions to install and enable packages into
-Symfony applications. Flex keeps tracks of the recipes it installed in a
-``symfony.lock`` file, which must be committed to your code repository.
+C'est possible car beaucoup de paquets/bundles Symfony définissent des **"recettes"** (recipes), qui
+sont des collections d'instructions automatisées pour installer et activer des paquets dans des applications Symfony.
+Flex garde trace des recettes installées dans un fichier ``symfony.lock``, qui doit être `commité`_ dans votre
+dépôt Git.
 
-Symfony Flex recipes are contributed by the community and they are stored in
-two public repositories:
+Les recette Symfony Flex sont des contributions de la communauté et sont stockées
+dans deux dépôts publics :
 
-* `Main recipe repository`_, is a curated list of recipes for high quality and
-  maintained packages. Symfony Flex only looks in this repository by default.
+* `Dépôt de recettes principal`_, une liste de recettes vérifiées, de grande qualité et maintenues.
+Par défaut, Symfony Flex va uniquement chercher dans ce dépôt.
 
-* `Contrib recipe repository`_, contains all the recipes created by the
-  community. All of them are guaranteed to work, but their associated packages
-  could be unmaintained. Symfony Flex will ask your permission before installing
-  any of these recipes.
+* `Dépôt de recettes contrib`_, contient toutes les recettes crées par la communauté. Elles fonctionnent toutes,
+mais leurs paquets associés pourraient ne plus être maintenues. Symfony Flex vous demandera votre permission
+avant d'installer une de ces recettes.
 
-Read the `Symfony Recipes documentation`_ to learn everything about how to
-create recipes for your own packages.
+Lisez la `Documentation recettes Symfony`_ pour apprendre tout sur la création de recettes pour vos propres paquets.
 
 .. _symfony-packs:
 
-Symfony Packs
+Packs Symfony
 ~~~~~~~~~~~~~
 
 Sometimes a single feature requires installing several packages and bundles.
@@ -205,7 +190,7 @@ command to unpack the already installed packs: ``composer unpack PACK_NAME``
 Checking Security Vulnerabilities
 ---------------------------------
 
-The ``symfony`` binary created when you `install Symfony`_ provides a command to
+The ``symfony`` binary created when you `installer Symfony`_ provides a command to
 check whether your project's dependencies contain any known security
 vulnerability:
 
@@ -215,7 +200,7 @@ vulnerability:
 
 A good security practice is to execute this command regularly to be able to
 update or replace compromised dependencies as soon as possible. The security
-check is done locally by cloning the public `PHP security advisories database`_,
+check is done locally by cloning the public `Base de données de conseils de sécurité PHP`_,
 so your ``composer.lock`` file is not sent on the network.
 
 .. tip::
@@ -230,7 +215,7 @@ Symfony LTS Versions
 
 According to the :doc:`Symfony release process </contributing/community/releases>`,
 "long-term support" (or LTS for short) versions are published every two years.
-Check out the `Symfony roadmap`_ to know which is the latest LTS version.
+Check out the `La roadmap de Symfony`_ to know which is the latest LTS version.
 
 By default, the command that creates new Symfony applications uses the latest
 stable version. If you want to use an LTS version, add the ``--version`` option:
@@ -277,17 +262,15 @@ Learn More
     setup/web_server_configuration
     setup/*
 
-.. _`Stellar Development with Symfony`: https://symfonycasts.com/screencast/symfony
-.. _`Install Composer`: https://getcomposer.org/download/
-.. _`Install Symfony`: https://symfony.com/download
-.. _`install Symfony`: https://symfony.com/download
-.. _`The Symfony Demo Application`: https://github.com/symfony/demo
+.. _`Installer Composer`: https://getcomposer.org/download/
+.. _`Installer Symfony`: https://symfony.com/download
+.. _`L'application de demo Symfony`: https://github.com/symfony/demo
 .. _`Symfony Flex`: https://github.com/symfony/flex
-.. _`PHP security advisories database`: https://github.com/FriendsOfPHP/security-advisories
-.. _`Symfony roadmap`: https://symfony.com/roadmap
-.. _`Main recipe repository`: https://github.com/symfony/recipes
-.. _`Contrib recipe repository`: https://github.com/symfony/recipes-contrib
-.. _`Symfony Recipes documentation`: https://github.com/symfony/recipes/blob/master/README.rst
+.. _`Base de données de conseils de sécurité PHP`: https://github.com/FriendsOfPHP/security-advisories
+.. _`La roadmap de Symfony`: https://symfony.com/roadmap
+.. _`Dépôt de recettes principal`: https://github.com/symfony/recipes
+.. _`Dépôt de recettes contrib`: https://github.com/symfony/recipes-contrib
+.. _`Documentation recettes Symfony`: https://github.com/symfony/recipes/blob/master/README.rst
 .. _`iconv`: https://php.net/book.iconv
 .. _`JSON`: https://php.net/book.json
 .. _`Session`: https://php.net/book.session
@@ -295,3 +278,4 @@ Learn More
 .. _`Tokenizer`: https://php.net/book.tokenizer
 .. _`SimpleXML`: https://php.net/book.simplexml
 .. _`PCRE`: https://php.net/book.pcre
+.. _`commité`: https://en.wikipedia.org/wiki/Commit_(version_control)

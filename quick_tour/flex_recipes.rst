@@ -1,23 +1,15 @@
-Flex: Compose your Application
-==============================
+Flex: Composez votre application
+================================
 
-After reading the first part of this tutorial, you have decided that Symfony was
-worth another 10 minutes. Great choice! In this second part, you'll learn about
-Symfony Flex: the amazing tool that makes adding new features as simple as running
-one command. It's also the reason why Symfony is ideal for a small micro-service
-or a huge application. Curious? Perfect!
+Après avoir lu la première partie du tutorial, vous avez décidé que Symfony valait bien 10 minutes de plus. Bon choix ! Dans cette seconde partie, vous allez découvrir Symfony Flex : un outil incroyable qui simplifie l'ajout de nouvelles fonctionnalités. C'est aussi la raison pour laquelle Symfony est idéal pour des micro-services ou des grosses applications. Curieux ? Parfait !
 
-Symfony: Start Micro!
----------------------
+Symfony: Commencer micro
+------------------------
 
-Unless you're building a pure API (more on that soon!), you'll probably want to
-render HTML. To do that, you'll use `Twig`_. Twig is a flexible, fast, and secure
-template engine for PHP. It makes your templates more readable and concise; it also
-makes them more friendly for web designers.
+A moins que vous ne travailliez sur une API pure, vous voulez certainement faire du rendu de HTML. Pour cela, vous allez utiliser `Twig`_. Twig est un moteur de template pour PHP, flexible, rapide et sécurisé. Il rend vos templates plus lisible et concis; il les rend aussi plus accessible aux designers web?
 
-Is Twig already installed in our application? Actually, not yet! And that's great!
-When you start a new Symfony project, it's *small*:  only the most critical dependencies
-are included in your ``composer.json`` file:
+Twig est-il déjà installé dans votre application ? Pas encore !
+Lorsque vous démarrez un projet Symfony, elle est *légère* : seul les dépendances les plus critiques sont inclues dans le fichier ``composer.json`` :
 
 .. code-block:: text
 
@@ -29,49 +21,40 @@ are included in your ``composer.json`` file:
         "symfony/yaml": "^4.1"
     }
 
-This makes Symfony different than any other PHP framework! Instead of starting with
-a *bulky* app with *every* possible feature you might ever need, a Symfony app is
-small, simple and *fast*. And you're in total control of what you add.
+Cela rend Symfony différent des autres frameworks PHP ! Plutôt que de commencer *gros* avec *toutes* les fonctionnalités possibles, une application Symfony est petite, simple et *rapide*. Vous avez le contrôle total sur ce que vous souhaitez ajouter.
 
-Flex Recipes and Aliases
-------------------------
+Recettes Flex et alias
+----------------------
 
-So how can we install and configure Twig? By running one single command:
+Comment peut-on installer et configurer Twig ? En exécutant cette commande :
 
 .. code-block:: terminal
 
     $ composer require twig
 
-Two *very* interesting things happen behind the scenes thanks to Symfony Flex: a
-Composer plugin that is already installed in our project.
+Deux choses *très* intéressantes se déroulent en arrière plan, grâce à Symfony Flex : un plugin Composer déjà installé dans notre projet.
+Premièrement, ``twig`` n'est pas le nom d'un package Composer : c'est un *alias* Flex qui pointe sur ``symfony/twig-bundle``. Flex traduit cette alias pour Composer.
 
-First, ``twig`` is not the name of a Composer package: it's a Flex *alias* that
-points to ``symfony/twig-bundle``. Flex resolves that alias for Composer.
+Deuxièmement, Flex installe une *recette* (recipe) pour ``symfony/twig-bundle``. Qu'est-ce qu'une recette ?
+C'est une manière, pour une librairie, de se configurer automatiquement en ajoutant et modifiant des fichiers. Grâce aux recettes, l'ajout de fonctionnalités se fait de manière automatique et homogène : installer un package et c'est terminé !
 
-And second, Flex installs a *recipe* for ``symfony/twig-bundle``. What's a recipe?
-It's a way for a library to automatically configure itself by adding and modifying
-files. Thanks to recipes, adding features is seamless and automated: install a package
-and you're done!
+Vous pouvez trouver une liste complète des recettes et des alias sur `https://flex.symfony.com`_.
 
-You can find a full list of recipes and aliases by going to `https://flex.symfony.com`_.
-
-What did this recipe do? In addition to automatically enabling the feature in
-``config/bundles.php``, it added 3 things:
+Qu'est-ce que cette recette a fait ? En plus d'automatiquement activer la fonctionnalité dans le fichier ``config/bundles.php``, elle a ajouté 3 choses :
 
 ``config/packages/twig.yaml``
-    A configuration file that sets up Twig with sensible defaults.
+    Un fichier de configuration avec les paramètres par défaut de Twig.
 
 ``config/routes/dev/twig.yaml``
-    A route that helps you debug your error pages.
+    Une route qui vous aide lors du débug des pages d'erreur.
 
 ``templates/``
-    This is the directory where template files will live. The recipe also added
-    a ``base.html.twig`` layout file.
+    Un dossier dans lequel vos fichiers de template vivent. La recette a également ajouté le fichier ``base.html.twig``.
 
-Twig: Rendering a Template
---------------------------
+Twig: Rendu d'un template (modèle)
+----------------------------------
 
-Thanks to Flex, after one command, you can start using Twig immediately:
+Grâce à Flex, après une commande, nous pouvons directement utiliser Twig :
 
 .. code-block:: diff
 
@@ -97,20 +80,16 @@ Thanks to Flex, after one command, you can start using Twig immediately:
          }
     }
 
-By extending ``AbstractController``, you now have access to a number of shortcut
-methods and tools, like ``render()``. Create the new template:
+En héritant de ``AbstractController``, vous avez maintenant accès à un certain nombre de méthodes et outils, tel que ``render()``. Créer un nouveau template :
 
 .. code-block:: html+twig
 
     {# templates/default/index.html.twig #}
     <h1>Hello {{ name }}</h1>
 
-That's it! The ``{{ name }}`` syntax will print the ``name`` variable that's passed
-in from the controller. If you're new to Twig, welcome! You'll learn more about
-its syntax and power later.
+C'est tout : La syntaxe ``{{ name }}`` va afficher le contenu de la variable ``name`` qui est passée au contrôleur. Si vous découvrez Twig, bienvenue ! Vous en apprendrez plus sur sa syntaxe et ses possibilités plus tard.
 
-But, right now, the page *only* contains the ``h1`` tag. To give it an HTML layout,
-extend ``base.html.twig``:
+Pour le moment, la page contient *uniquement* le tag ``h1``. Pour lui donner un modèle HTML, on peut hériter de  ``base.html.twig``:
 
 .. code-block:: html+twig
 
@@ -121,37 +100,29 @@ extend ``base.html.twig``:
         <h1>Hello {{ name }}</h1>
     {% endblock %}
 
-This is called template inheritance: our page now inherits the HTML structure from
-``base.html.twig``.
+C'est ce qu'on appelle l'héritage de template : notre page hérite de la structure HTML du fichier ``base.html.twig``.
 
-Profiler: Debugging Paradise
-----------------------------
+Profiler: le paradis du débug
+-----------------------------
 
-One of the *coolest* features of Symfony isn't even installed yet! Let's fix that:
+Une des fonctionnalités les plus *cool* de Symfony n'est pas encore installé ! Réglons ça :
 
 .. code-block:: terminal
 
     $ composer require profiler
 
-Yes! This is another alias! And Flex *also* installs another recipe, which automates
-the configuration of Symfony's Profiler. What's the result? Refresh!
+Oui ! C'est un autre alias ! Et Flex installe *également* une autre recette, qui aide à automatiser la configuration du profiler de Symfony. Pour voir le résultat, rafraichissez la page !
 
-See that black bar on the bottom? That's the web debug toolbar, and it's your new
-best friend. By hovering over each icon, you can get information about what controller
-was executed, performance information, cache hits & misses and a lot more. Click
-any icon to go into the *profiler* where you have even *more* detailed debugging
-and performance data!
+Vous voyez cette barre noir en bas ? C'est la barre d'outils de débug web, et c'est votre nouveau meilleur ami. En passant la souris sur chaque icône, vous pouvez avoir des informations sur le contrôleur exécuté, les performances, le cache, et bien plus. Cliquer sur un icone pour vous rendre dans le *profiler* où vous obtiendrez des informations détaillées.
 
-Oh, and as you install more libraries, you'll get more tools (like a web debug toolbar
-icon that shows database queries).
+En installant plus de librairies, vous aurez accès à plus d'outils (tel que les informations sur les requêtes de base de données)
 
-You can now directly use the profiler because it configured *itself* thanks to
-the recipe. What else can we install?
+Vous pouvez utiliser le profiler directement car il s'est configuré *tout seul* grâce à la recette. Que pouvons-nous installer d'autre ?
 
-Rich API Support
-----------------
+Support API riche
+-----------------
 
-Are you building an API? You can already return JSON from any controller::
+Vous développez une API ? Vous pouvez déjà retourner du JSON depuis n'importe quel contrôleur ::
 
     // src/Controller/DefaultController.php
     namespace App\Controller;
@@ -175,7 +146,7 @@ Are you building an API? You can already return JSON from any controller::
         }
     }
 
-But for a *truly* rich API, try installing `API Platform`_:
+Mais pour une API réellement riche, essayez d'installer `API Platform`_:
 
 .. code-block:: terminal
 

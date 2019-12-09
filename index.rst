@@ -3,20 +3,6 @@
 Documentation Symfony 5.0
 =========================
 
-Vue d'ensemble rapide
----------------------
-
-Découvrez Symfony rapidement :doc:`avec le quick tour <quick_tour/index>`:
-
-.. toctree::
-    :hidden:
-
-    quick_tour/index
-
-* :doc:`quick_tour/the_big_picture`
-* :doc:`quick_tour/flex_recipes`
-* :doc:`quick_tour/the_architecture`
-
 Débuter
 -------
 
@@ -71,8 +57,8 @@ Composants
 
 Lire la documentation sur les :doc:`composants </components/index>`.
 
-Reference Documents
--------------------
+Référence
+---------
 
 Trouvez des réponses rapidement avec les documents de référence :
 

@@ -1,5 +1,5 @@
-Getting Started
----------------
+Débuter
+-------
 
 .. toctree::
     :maxdepth: 1
