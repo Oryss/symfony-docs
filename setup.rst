@@ -169,30 +169,26 @@ Lisez la `Documentation recettes Symfony`_ pour apprendre tout sur la création 
 Packs Symfony
 ~~~~~~~~~~~~~
 
-Sometimes a single feature requires installing several packages and bundles.
-Instead of installing them individually, Symfony provides **packs**, which are
-Composer metapackages that include several dependencies.
+Des fois, une seule fonctionnalité requiert l'installation de plusieurs paquets et bundles.
+Plutôt que de les installer individuellement, Symfony fournit des **packs**, qui sont
+des metapaquets Composer incluant plusieurs dépendances.
 
-For example, to add debugging features in your application, you can run the
-``composer require --dev debug`` command. This installs the ``symfony/debug-pack``,
-which in turn installs several packages like ``symfony/debug-bundle``,
-``symfony/monolog-bundle``, ``symfony/var-dumper``, etc.
+Par exemple, pour ajouter des fonctionnalités de débug à votre application, vous pouvez lancer
+la commande ``composer require --dev debug``. Cela va installer le ``symfony/debug-pack`` qui va à son tour
+installer ``symfony/debug-bundle``, ``symfony/monolog-bundle``, ``symfony/var-dumper``, etc.
 
-By default, when installing Symfony packs, your ``composer.json`` file shows the
-pack dependency (e.g. ``"symfony/debug-pack": "^1.0"``) instead of the actual
-packages installed. To show the packages, add the ``--unpack`` option when
-installing a pack (e.g. ``composer require debug --dev --unpack``) or run this
-command to unpack the already installed packs: ``composer unpack PACK_NAME``
-(e.g. ``composer unpack debug``).
+Par défaut, lors de l'installation de packs, votre fichier ``composer.json`` affiche les dépendances du pack
+(exemple ``"symfony/debug-pack": "^1.0"``) plutôt que les paquets installés. Pour afficher les paquets,
+ajoutez l'option ``--unpack`` en installant le pack (``composer require debug --dev --unpack``) ou
+lancer cette commande pour unpack des packs déjà installés : ``composer unpack PACK_NAME`` (exemple ``composer unpack debug``).
 
 .. _security-checker:
 
-Checking Security Vulnerabilities
----------------------------------
+Vérifier les vulnérabilités de sécurité
+---------------------------------------
 
-The ``symfony`` binary created when you `installer Symfony`_ provides a command to
-check whether your project's dependencies contain any known security
-vulnerability:
+L'exécutable ``symfony`` crée lorsque vous installez Symfony fournit une commande pour vérifier
+si les dépendances de votre projet contiennent des vulnérabilités connues :
 
 .. code-block:: terminal
 
